@@ -1,0 +1,94 @@
+/*头部颜色*/
+#navbar {
+	background-color: #f0ecec
+}
+
+#navbar-container {
+	box-shadow: 0 2px 0 -1px rgba(0,0,0,0.05)
+}
+
+.navbar-header {
+	background-color: #383c40
+}
+
+.navbar-content {
+	background-color: #da5959;
+	box-shadow: inset -4px 0 0 0 #da5959
+}
+
+.navbar-brand {
+	background-color: transparent;
+	color: #fff
+}
+
+.navbar-brand:hover,.navbar-brand:focus {
+	color: #fff
+}
+
+.navbar-top-links>li>a {
+	color: #fff
+}
+
+.navbar-top-links>li>a:focus {
+	background-color: transparent
+}
+
+.navbar-top-links>li>a:hover {
+	background-color: #d54444;
+	color: #d9d9d9
+}
+
+.navbar-top-links>.open>a,.navbar-top-links>.open>a:focus {
+	background-color: #d54444;
+	color: #fff
+}
+
+.navbar-top-links .tgl-menu-btn>a,.navbar-top-links .tgl-menu-btn>a:hover,.navbar-top-links .tgl-menu-btn>a:focus {
+	color: #fff
+}
+
+@media (min-width:768px) {
+	#navbar {
+		background-color: transparent
+	}
+
+	.navbar-header {
+		background-color: transparent
+	}
+
+	.navbar-header:before {
+		background-color: #383c40
+	}
+
+	#navbar-container {
+		background-color: #da5959
+	}
+
+	#container.mainnav-in .brand-title,#container.mainnav-sm .brand-title,#container.mainnav-lg .brand-title {
+		color: #fff
+	}
+
+	.navbar-top-links .tgl-menu-btn {
+		position: static
+	}
+	#container.mainnav-sm .shortcut-grid:hover {
+	box-shadow: none;
+	background-color: #d54444;
+	color: #fff;
+}
+
+	.navbar-top-links .tgl-menu-btn>a,.navbar-top-links .tgl-menu-btn>a:hover {
+		color: #fff
+	}
+
+	.navbar-top-links .tgl-menu-btn>a:focus {
+		background-color: transparent;
+		color: #fff
+	}
+}
+.navbar-header {
+	background: #f34541;
+}
+.navbar-brand,.navbar-content {
+	background-color: #f34541;
+}

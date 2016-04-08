@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wr.push.mapper.TagInfo">
+
+	<resultMap id="tagInfoResult" type="tagInfo">
+		<id property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="businessDistricts" column="BUSINESS_DISTRICTS" />
+		<result property="ageRanges" column="AGE_RANGES"/>
+		<result property="genderRanges" column="GENDER_RANGES" />
+		<result property="phonePlanRanges" column="PHONE_PLAN_RANGES" />
+		<result property="meTypeRanges" column="ME_TYPE_RANGES" />
+		<result property="description" column="DESCRIPTION" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="lastUpdTime" column="LAST_UPD_TIME" />
+	</resultMap>
+
+	<insert id="save" parameterType="tagInfo">
+		<selectKey resultType="String" order="BEFORE" keyProperty="id">
+			SELECT SYS_GUID() FROM DUAL
+		</selectKey>
+		<![CDATA[
+			insert
+			into TAG_INFO(
+				ID,
+				NAME,
+				BUSINESS_DISTRICTS,
+				AGE_RANGES,
+				GENDER_RANGES,
+				PHONE_PLAN_RANGES,
+				ME_TYPE_RANGES,
+				DESCRIPTION,
+				CREATE_TIME,
+				LAST_UPD_TIME )
+			values
+			(
+				#{id},
+				#{name},
+				#{businessDistricts,jdbcType=VARCHAR},
+				#{ageRanges,jdbcType=VARCHAR},
+				#{genderRanges,jdbcType=VARCHAR},
+				#{phonePlanRanges,jdbcType=VARCHAR},
+				#{meTypeRanges,jdbcType=VARCHAR},
+				#{description,jdbcType=VARCHAR},
+				#{createTime},
+				#{lastUpdTime})
+		]]>
+	</insert>
+
+	<update id="update" parameterType="tagInfo">
+		<![CDATA[
+		update TAG_INFO set
+			NAME = #{name},
+			BUSINESS_DISTRICTS = #{businessDistricts,jdbcType=VARCHAR},
+			AGE_RANGES = #{ageRanges,jdbcType=VARCHAR},
+			GENDER_RANGES = #{genderRanges,jdbcType=VARCHAR},
+			PHONE_PLAN_RANGES = #{phonePlanRanges,jdbcType=VARCHAR},
+			ME_TYPE_RANGES = #{meTypeRanges,jdbcType=VARCHAR},
+			DESCRIPTION = #{description,jdbcType=VARCHAR},
+			LAST_UPD_TIME = #{lastUpdTime}
+		where
+			id = #{id}
+		]]>
+	</update>
+
+	<delete id="delete">
+		delete TAG_INFO where id = #{id}
+	</delete>
+	
+	<delete id="batchDel" parameterType="List" >
+		<![CDATA[
+			delete from TAG_INFO where id in 
+		]]>
+		<foreach collection="list" index="i" open="(" separator="," close=")" item="item"  > 
+			#{item}
+		</foreach>
+	</delete>
+	
+	<select id="get" parameterType="String" resultMap="tagInfoResult">
+		Select *
+		from
+			TAG_INFO
+		where
+			id = #{id}
+	</select>
+	
+	<sql id="criteriaWhereClause">
+		<where>
+			<foreach collection="queryParam" index="key" item="item">
+				<if test="key=='name'">
+					and NAME = #{item}
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="criteriaOrderByClause">
+		<if test="sort != null and order != null">
+			order by
+			<choose>
+				<when test="sort=='lastUpdTime'">LAST_UPD_TIME</when>
+			</choose>
+			${order}
+		</if>
+		<if test="sort == null or order == null">
+			order by LAST_UPD_TIME desc
+		</if>
+	</sql>
+
+	<select id="pagingCount" parameterType="map" resultType="int">
+		<![CDATA[
+			select count(*) from TAG_INFO
+		]]>
+		<bind name="queryParam" value="_parameter"/>
+		<include refid="criteriaWhereClause"></include>
+	</select>
+	<select id="pagingList" parameterType="queryCriteria" resultMap="tagInfoResult">
+		<![CDATA[
+			select * from TAG_INFO 
+		]]>
+		<include refid="criteriaWhereClause" />
+		<include refid="criteriaOrderByClause" />
+	</select>
+</mapper>

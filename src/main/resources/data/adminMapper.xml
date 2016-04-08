@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.batis.mapping.Admin">
+	<!-- 用来描述如何从数据库结果集中来加载对象 -->
+	<resultMap type="admin" id="adminResult">
+		<id property="id" column="ID" />
+		<result property="loginName" column="LOGIN_NAME" />
+		<result property="password" column="PASSWORD" />
+		<result property="userName" column="USER_NAME" />
+		<result property="status" column="STATUS" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="lastLoginTime" column="LAST_LOGIN_TIME" />
+	</resultMap>
+	<!-- 映射插入语句 -->
+	<insert id="save" parameterType="admin">
+		<!-- selectKey元素将会首先运行，admin的id会被设置，然后插入语句会被调用 -->
+		<!-- resultType 结果的类型，order before：先选择主键，再执行插入语句 ，after:先执行插入语句，再执行selectKey -->
+		<selectKey resultType="String" order="BEFORE" keyProperty="id"> <!-- keyProperty 唯一标记一个属性，MyBatis会通过getGeneratedKeys的返回值或者通过insert语句的selectKey子元素设置它的键值 -->
+			SELECT SYS_GUID() FROM DUAL
+		</selectKey>
+		<![CDATA[
+			insert into ADMIN (
+				ID,
+				LOGIN_NAME,
+				PASSWORD,
+				USER_NAME,
+				STATUS,
+				CREATE_TIME,
+				LAST_LOGIN_TIME)
+			values(
+				#{id},
+				#{loginName},
+				#{password},
+				#{userName},
+				#{status},
+				#{createTime},
+				#{lastLoginTime})
+		]]>
+	</insert>
+	<!--映射查询语句 查询管理员，根据id   参数符号：#{id}   这就告诉MyBatis创建一个预处理语句参数，通过JDBC，这样的一个参数在SQL中会由一个"?"来标识-->
+	<select id="get" parameterType="String" resultMap="adminResult">  
+		<![CDATA[ 
+			select * from ADMIN where id = #{id}
+		]]>
+	</select>
+	<!-- 映射更新语句 -->
+	<update id="update" parameterType="admin">
+		<![CDATA[
+			update ADMIN set
+				LOGIN_NAME=#{loginName},
+				PASSWORD=#{password},
+				USER_NAME=#{userName},
+				STATUS=#{status},
+				CREATE_TIME=#{createTime},
+				LAST_LOGIN_TIME=#{lastLoginTime}
+			where 
+				ID=#{id}
+		]]>
+	</update>
+	<!--  -->
+	<insert id="add" parameterType="admin">
+		<selectKey resultType="long" order="BEFORE" keyProperty="id">
+			SELECT SEQ_ADMIN_ID.NEXTVAL FROM DUAL
+		</selectKey>
+		<![CDATA[
+			insert
+			into ADMIN(
+			ID,
+			USER_NAME,
+			LOGIN_NAME,
+			PASSWORD,
+			STATUS,
+			CREATE_DATE)
+			values
+			(
+			#{id:NUMERIC},
+			#{userName},
+			#{loginName},
+			#{password},
+			#{status},
+			#{createDate})
+		]]>
+	</insert>
+	<delete id="delete">
+		<![CDATA[
+			delete from ADMIN where id = #{id}
+		]]>
+	</delete>
+
+	<delete id="batchDel" parameterType="List">
+		<![CDATA[]]>
+		delete from ADMIN where id in
+		<foreach collection="list" index="i" item="item" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	<!-- 定义可被其他语句引用的可重用语句块。  -->
+	<sql id="criteriaWhereClause">
+		<where>
+			<foreach collection="queryParam" index="key" item="item">
+				<if test="key=='loginName'">
+					and login_name = #{item}
+				</if>
+				<if test="key=='userName'">
+					and user_name like '%'||#{item}||'%'
+				</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<sql id="criteriaOrderByClause">
+		<if test="sort != null and order != null">
+			order by
+			<choose>
+				<when test="sort == 'createTime'">create_time</when>
+			</choose>
+			${order}
+		</if>
+		<if test="sort == null or order == null">
+			order by create_time desc
+		</if>
+	</sql>
+
+	<select id="pagingCount" parameterType="map" resultType="int">
+		<![CDATA[
+		select count(*) from admin
+		]]>
+		<bind name="queryParam" value="_parameter" />
+		<include refid="criteriaWhereClause" />
+	</select>
+
+	<select id="pagingList" parameterType="queryCriteria" resultMap="adminResult">
+		<![CDATA[
+		select * from admin
+		]]>
+		<include refid="criteriaWhereClause" />
+		<include refid="criteriaOrderByClause" />
+	</select>
+
+	<select id="findList" parameterType="map" resultMap="adminResult">
+		select * from admin
+		<bind name="queryParam" value="_parameter" />
+		<include refid="criteriaWhereClause" />
+	</select>
+</mapper> 

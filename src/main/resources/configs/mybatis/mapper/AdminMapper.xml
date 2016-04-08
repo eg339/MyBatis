@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.batis.mapping.Admin">
+
+	<resultMap type="admin" id="adminResult">
+		<id property="id" column="ID" />
+		<result property="loginName" column="LOGIN_NAME" />
+		<result property="password" column="PASSWORD" />
+		<result property="userName" column="USER_NAME" />
+		<result property="status" column="STATUS" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="lastLoginTime" column="LAST_LOGIN_TIME" />
+	</resultMap>
+
+	<insert id="save" parameterType="admin">
+		<selectKey resultType="String" order="BEFORE" keyProperty="id">
+			SELECT SYS_GUID() FROM DUAL
+		</selectKey>
+		<![CDATA[
+			insert into ADMIN (
+				ID,
+				LOGIN_NAME,
+				PASSWORD,
+				USER_NAME,
+				STATUS,
+				CREATE_TIME,
+				LAST_LOGIN_TIME)
+			values(
+				#{id},
+				#{loginName},
+				#{password},
+				#{userName},
+				#{status},
+				#{createTime},
+				#{lastLoginTime})
+		]]>
+	</insert>
+	<!-- 查询管理员，根据id -->
+	<select id="get" parameterType="Integer" resultMap="adminResult">  
+		<![CDATA[ 
+			select * from ADMIN where id = #{id}
+		]]>
+	</select>
+	
+	<update id="update" parameterType="admin">
+		<![CDATA[
+			update ADMIN set
+				LOGIN_NAME=#{loginName},
+				PASSWORD=#{password},
+				USER_NAME=#{userName},
+				STATUS=#{status},
+				CREATE_TIME=#{createTime},
+				LAST_LOGIN_TIME=#{lastLoginTime}
+			where 
+				ID=#{id}
+		]]>
+	</update>
+
+	<insert id="add" parameterType="com.batis.po.Admin">
+		<selectKey resultType="long" order="BEFORE" keyProperty="id">
+			SELECT SEQ_ADMIN_ID.NEXTVAL FROM DUAL
+		</selectKey>
+		<![CDATA[
+			insert
+			into ADMIN(
+			ID,
+			USER_NAME,
+			LOGIN_NAME,
+			PASSWORD,
+			STATUS,
+			CREATE_TIME)
+			values
+			(
+			#{id:NUMERIC},
+			#{userName},
+			#{loginName},
+			#{password},
+			#{status},
+			#{createTime})
+		]]>
+	</insert>
+	<delete id="delete">
+		<![CDATA[
+			delete from ADMIN where id = #{id}
+		]]>
+	</delete>
+
+	<delete id="batchDel" parameterType="List">
+		<![CDATA[]]>
+		delete from ADMIN where id in
+		<foreach collection="list" index="i" item="item" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+</mapper> 

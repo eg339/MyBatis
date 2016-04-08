@@ -1,0 +1,108 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
+    http://www.springframework.org/schema/context    
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+	default-autowire="byName">
+
+	<!-- - Is used to activate annotations in beans already registered in the 
+		application context - (no matter if they were defined with XML or by package 
+		scanning). -->
+	<context:annotation-config />
+	<!-- - It's just improperly named. Actually it configures support for new 
+		Spring MVC features - such as declarative validation with @Valid, HTTP message 
+		conversion with @RequestBody/@ResponseBody, - new field conversion architecture, 
+		etc use this for Spring Jackson JSON support -->
+	<!-- <mvc:annotation-driven /> -->
+
+	<!-- - That's because both tags register the same processing tools (<context:annotation-config 
+		/> - can be omitted if <context:component-scan> is specified) - but Spring 
+		takes care of running them only once. -->
+	<context:component-scan base-package="com.batis.web.controller" />
+
+	<!-- Required for security annotations to work in this servlet -->
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+
+	<!-- ========================= MESSAGE SOURCE DEFINITION ========================= -->
+	<!-- - Message source for this context, loaded from localized "messages_xx" 
+		files. - Could also reside in the root application context, as it is generic, 
+		- but is currently just used within Petclinic's web tier. -->
+
+	<!-- method handler annotation 解决ResponseBody中含有乱码的问题 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"> -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+				<bean
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.tiles2.TilesView</value>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"> -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+		<property name="order" value="0" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<property name="order" value="1" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+
+	<!-- - If you want to map directly to the *.jsp without creating a custom 
+		controller - <bean name="/**/*.jhtml" class="org.springframework.web.servlet.mvc.UrlFilenameViewController" 
+		/> -->
+
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles-defs.xml</value>
+			</list>
+		</property>
+	</bean>
+
+<!-- 	<bean id="multipartResolver" -->
+<!-- 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> -->
+		<!-- one of the properties available; the maximum file size in bytes -->
+<!-- 		<property name="maxUploadSize" value="1000000000" /> -->
+<!-- 	</bean> -->
+</beans>

@@ -1,0 +1,6 @@
+#file
+.classpath
+.project
+#folder
+/target/
+/.settings/

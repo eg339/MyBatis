@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<!-- 前台登录页面 -->
+	<definition name="portal.login.def" template="/WEB-INF/pages/portal/login.jsp">
+	</definition>
+
+	<!-- 后台-admin管理员base definition -->
+	<definition name="admin.base.def" template="/WEB-INF/pages/admin/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/pages/admin/common/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/pages/admin/common/menu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/pages/common/footer.jsp" />
+		<put-attribute name="toolkit" value="/WEB-INF/pages/common/toolkit.jsp" />
+	</definition>
+	
+	<!-- 后台-管理员登录欢迎页 -->
+	<definition name="admin.welcome.def" extends="admin.base.def">
+		<put-attribute name="content" value="/WEB-INF/pages/admin/welcome.jsp" />
+	</definition>
+	
+	<!-- 后台-管理员登录欢迎页 -->
+	<definition name="admin.card.def" extends="admin.base.def">
+		<put-attribute name="content" value="/WEB-INF/pages/admin/card/card.jsp" />
+	</definition>
+	
+	<!-- 后台-操作员管理列表 -->
+	<definition name="admin.operator.list.def" extends="admin.base.def">
+		<put-attribute name="content" value="/WEB-INF/pages/admin/operator/list.jsp" />
+	</definition>
+
+	<!-- 后台-adminPermission权限管理 -->
+	 <definition name="admin.adminPermission.list.def" extends="admin.base.def">
+		<put-attribute name="content" value="/WEB-INF/pages/admin/adminPermission/list.jsp" />
+	</definition> 
+	<!-- 后台-adminRole权限角色 -->
+	 <definition name="admin.adminRole.list.def" extends="admin.base.def">
+		<put-attribute name="content" value="/WEB-INF/pages/admin/adminRole/list.jsp" />
+	</definition> 
+	<!-- 后台-admin密码修改 -->
+	 <definition name="admin.pwd.def" extends="admin.base.def">
+		<put-attribute name="content" value="/WEB-INF/pages/admin/userCenter/changePwd.jsp" />
+	</definition> 
+	
+	<!-- 后台-管理员个人信息管理 -->
+	<definition name="admin.info.def" extends="admin.base.def">
+		<put-attribute name="content" value="/WEB-INF/pages/admin/userCenter/personInfo.jsp" />
+	</definition>
+	
+	<definition name="page.404.def" template="/common/404.jsp"/>
+	<definition name="page.500.def" template="/common/500.jsp"/>
+	<definition name="page.403.def" template="/common/403.jsp"/>
+	
+</tiles-definitions>

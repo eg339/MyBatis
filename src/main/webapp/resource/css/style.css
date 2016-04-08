@@ -1,0 +1,649 @@
+body {
+	font-family: Arial, 'Microsoft YaHei', sans-serif;
+}
+/*侧边栏收起图标*/
+.cy-nav-icon {
+	position: relative;
+}
+.cy-nav-icon-flag-admin {
+	width: 43px;
+	height: 48px;
+	background: url(../img/Flag01.png);
+	background-size: 100% 100%;
+	position: absolute;
+    left: -3px;
+    bottom: -47px; 
+	z-index: -1;
+}
+.cy-nav-icon-flag {
+	width: 43px;
+	height: 48px;
+	background: url(../img/Flag02.png);
+	background-size: 100% 100%;
+	position: absolute;
+    left: -3px;
+    bottom: -47px; 
+	z-index: -1;
+}
+/*管理员首页*/
+.cy-data-statistics .media-body {
+	vertical-align: middle;
+}
+.cy-data-statistics .media-body p {
+	font-size: 14px;
+}
+/*图标*/
+.fa-simcard {
+	background: url(../img/aaaa.png) no-repeat;
+	background-size: 75%;
+}
+.fa-insertcard {
+	background: url(../img/bbbb.png) no-repeat;
+	background-size: 95%;
+	margin-top: 2px;
+}
+.my-fa {
+	background-position: center;
+	height: 12px;
+	width: 12px;
+	float: left;
+}
+.cy-index-panel .iconfont {
+	margin-bottom: -10px;
+    margin-top: -15px;
+    display: inline-block;
+}
+/*覆盖*/
+#aside
+{
+	background:#fff;
+}
+#mainnav-container {
+	padding: 0;
+}
+#mainnav {
+	margin-top: 50px;
+}
+#aside-container #aside .nav-tabs li:not(active) a {
+	padding: 10px 0;
+}
+#aside-container #aside .tab-content {
+	padding: 0;
+}
+.brand-icon {
+	height: 40px;
+    width: 46px;
+    margin: 7px 0 0 6px;
+}
+.modal-header .close {
+	color: #fff;
+	opacity: 1;
+}
+.page-list {
+	display: none !important;
+}
+#mainnav-menu i {
+	width: 9px;
+	padding: 0;
+}
+/*login*/
+.cy-nav {
+	position: absolute;
+	right: 10px;
+	top:10px;
+}
+.cy-fotter-company {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: 40px;
+	background: rgba(0,0,0,.5);
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+	opacity: .7;
+}
+
+.cy-nav a {
+	padding: 0px 20px;
+	border-right: 1px solid #ddd; 
+	opacity: 0.7;
+	font-size: 14px;
+	-webkit-transition: all 0.3s linear;
+}
+.cy-nav a:hover {
+	opacity: 1;
+}
+.cy-login-tab .nav-tabs>li>a {
+	margin-right: 0px;	
+}
+.cy-login-tab .nav-tabs>li>a:hover {
+	border-color: transparent !important; 
+}
+.cy-login-tab {
+	color: #515151;
+}
+.cy-login-tab .tab-content {
+	opacity: 0.9;
+	height: 295px;
+}
+.cy-login-tab .nav-tabs>li {
+	opacity: 0.9;
+	margin-bottom: 0px;
+}
+.cy-login-tab .btn {
+  	padding: 6px 22px;
+}
+.cy-login-tab em {
+	font-size: 12px;
+}
+.cy-activities .active {
+	opacity: 1;
+	-webkit-transform: scale(1,1);
+}
+.cy-activities .active-button {
+	opacity: 0;
+	-webkit-transform: scale(2.2,2.2);
+}
+.cy-activities a {
+	display: block;
+}
+.cy-login-right, .cy-login-left {
+	padding: 5px 5px 0px 5px;
+	opacity: 0;
+	height: 332px;
+	background: #ffffff;
+	-webkit-transform: scale(0.35,0.3);
+	-webkit-transition: all 0.3s linear 0.05s;
+}
+.cy-login-right .panel-body,.cy-login-left .panel-body {
+	height: 88px;
+	margin-bottom: 5px;
+	padding: 0;
+}
+.cy-login-right .panel-body img,.cy-login-left .panel-body img {
+	width: 100%;
+	height: 136px;
+}
+.cy-login-right .panel-body:last-child,.cy-login-left .panel-body:last-child {
+	margin-bottom: 0;
+}	
+.cy-login-button button {
+	opacity: 1;
+	width: 100px;
+	height: 100px;
+	color: #ffffff;
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    background-color: rgba(70,185,216,0.7) !important;
+    -webkit-transform: scale(1,1);
+    -webkit-transition: all 0.4s linear;
+}
+.cy-login-validation {
+	margin-left: 15px !important;
+}
+.cy-login-validation img {
+	width: 100%;
+	height: 31px;
+}
+.brand-title,.navbar-top-links .tgl-menu-btn>a,.navbar-top-links>li>a {
+	color:#fff !important;
+}
+.brand-title img {
+    width: 100%;
+}
+.cy-index-nav .navbar-content {
+	box-shadow: none;
+}
+.cy-index-navright .custom-search-form {
+	margin-top: 8px;
+}
+.cy-index-container .tab-content {
+	color:#000000;
+}
+.cy-index-tab1 .bootstrap-select {
+	width: 150px !important;
+	margin: 5px !important;
+}
+.cy-index-tab1 .panel-heading {
+	height: 30px;
+}
+.cy-index-tab1 .panel-title {
+	line-height: 30px;
+	font-size: 14px;
+}
+.cy-index-tab1 .demo-panel-alert {
+	margin: 5px;
+}
+.cy-index-tab1 .demo-panel-alert .panel-title {
+	padding-left: 10px;
+}
+.cy-index-tab1 .demo-panel-alert .panel-control {
+	padding-right: 10px;
+}
+.cy-index-tab1 .demo-panel-alert .panel-body {
+	padding: 25px 10px;
+}
+.cy-index-tab1 .panel-control .btn {
+	padding-right: 0px !important;
+}
+/*data-form*/
+.cy-data-form-content,.cy-information-list {
+	padding: 20px 10px !important;
+}
+.cy-data-form .form-control.bootstrap-select .caret {
+	color: #515151;
+}
+.cy-data-form .form-radio {
+	padding-top: 7px;
+	margin-right: -15px;
+}
+.cy-data-form .form-checkbox.form-normal:before,.cy-data-form .form-radio.form-normal:before {
+	margin-top: -6px;
+}
+.cy-data-form .form-radio.form-normal:not(.disabled):hover:after,.cy-data-form .form-radio.form-normal.active:after {
+	margin-bottom: -6px;
+}
+.cy-data-form-table ul {
+	list-style: none;
+	margin-bottom: 0;
+}
+.cy-data-form-table ul li {
+	float: left;
+}
+.cy-data-form-table .panel-heading {
+	height: auto;
+}
+.cy-data-form-table .panel-heading .btn {
+	margin: 5px;
+	width: 80px;
+}
+.cy-data-form-table .panel-control {
+	margin-top: 5px;
+	padding-right: 0;
+}
+.cy-data-form-table table,.cy-data-form-table table th {
+	text-align: center;
+}
+.cy-data-form-table table tr .btn {
+	margin-right: 5px;
+}
+.cy-data-form-table button[name='refresh'],.cy-data-form-table button[name='toggle'] {
+	display: none;
+}
+.cy-table-body tbody .selected td {
+	background-color: #f2f5ca;
+}
+/*data-tree*/
+.cy-data-tree {
+	min-height: 500px;
+	overflow: auto;
+}
+/*information-list*/
+.cy-information-list .media-body.pad-hor p {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.cy-information-list .mar-btm {
+	margin: 0;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 5px;
+}
+.cy-information-list .nano>.nano-content {
+	position: relative;
+}
+/*响应式*/
+@media (max-width: 768px) {
+	.cy-nav-icon-flag {
+		width: 30px;
+	}
+	#container.aside-in #aside {
+		padding-top: 0;
+	}
+	#container #aside-container {
+	    padding: 0;
+	    background-color: #fff;
+	    position: absolute;
+	    width: 220px;
+	    height: auto;
+	    left: auto;
+	    right: -220px;
+	    bottom: 0;
+	    top: 100px;
+	    overflow: hidden;
+	    visibility: hidden;
+	    z-index: 99;
+	}	
+	#container.aside-in #aside-container {
+	    left: auto; 
+	    right: 0; 
+	}
+	#aside {
+	    max-height: none;
+	    padding-top: 0;
+	    visibility: visible;
+	    background-color: #3c4d5e;
+	    height: 100%;
+	}
+	#container.aside-in #aside {
+    	padding-top: 0;
+	}
+	.navbar-top-links .tgl-menu-btn {
+		right: 8px;
+	}
+	#container.mainnav-in #aside-container {
+	    left: auto;
+	    right: auto;
+	}
+}
+@media (min-width: 768px) {
+	#aside {
+		padding-top: 0;
+	}
+	#container #aside-container {
+		top: 50px;
+		z-index: 99;
+	}
+	#container.aside-in #aside {
+		padding-top: 0;
+	}
+	#container.mainnav-sm .brand-icon {
+	    width: 35px;
+	    height: 25px;
+	    margin: 10px 0 0 5px;
+	}
+	.cy-login-logo {
+		width: 33%;
+	}
+	#navbar .brand-title {
+	    padding: 0 0 0 60px;
+	}
+}
+.cls-container-white {
+	background: #fff;
+	color: #333;
+}
+.brand-title-white {
+	color: #333 !important;
+}
+/*工具*/
+.cy-nopadding {
+	padding: 0px !important;
+}
+.cy-nopadding-left {
+	padding-left: 0px !important;
+}
+.cy-nopadding-top {
+	padding-top: 0 !important;
+}
+.cy-noborder {
+	border: none !important;
+}
+.text-white {
+	color: transparent !important;
+}
+.no-hover a:hover {
+	background: none !important;
+}
+
+
+/**************css wanglei***********/
+/****个人信息页***/
+.cy-headimg-wrap,.cy-msg-wrap{
+	display: inline-block;
+	width: 200px;
+}
+.cy-msg-wrap textarea{
+	width: 200px;
+	resize: vertical;
+}
+.cy-headimg{
+	width: 180px;
+	height: 190px;
+}
+/******************/
+
+
+.display-no{
+	display: none;
+}
+
+/****卡片管理页***/
+.cy-borad-title{
+	position: relative;
+	top: -8px;
+	background-color: #FFF;
+}
+/*****************/
+
+
+.cy-mar-all-s{
+	margin: 8px;
+}
+.cy-mar-lft-s{
+	margin-left: 8px;
+}
+.cy-mar-rgt-s{
+	margin-right: 8px;
+}
+.cy-mar-hor-s{
+	margin-left: 8px;
+	margin-right: 8px;
+}
+.cy-mar-ver-s{
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.cy-mar-ver-m{
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+.cy-pad-all-s{
+	padding: 8px;
+}
+.cy-pad-hor-s{
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.cy-pad-top-s{
+	padding-top: 8px;
+}
+.cy-pad-rgt-s{
+	padding-right: 8px;
+}
+.cy-pad-lft-s{
+	padding-left: 8px;
+	padding-right: 0px;
+}
+.cy-pad-btm-s{
+	padding-bottom: 8px;
+}
+.cy-pad-ver-s{
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+
+
+@media (min-width: 768px) {
+	.bord-lft-f{
+		border-left: 1px solid #EEE;
+	}
+	.bord-rgt-f{
+		border-right: 1px solid #EEE;
+	}
+}
+@media (max-width: 768px) {
+	.pad-lft-no-f{
+		padding-left: 0px;
+	}
+	.cy-text-center-xs{
+		text-align: center;
+	}
+}
+@media (min-width: 992px) {
+	.cy-text-right-md{
+		text-align: right;
+	}
+}
+@media (min-width: 1270px) {
+	.cy-input-s{
+		max-width: 110px;
+	}
+}
+.cy-input-inline{
+	display: inline-block;
+}
+.cy-btn-s{
+	max-width: 70px;
+}
+.cy-btn-pad{
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.cy-btn-pad-s{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.bord-btm-f{
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid #333;
+	border-left: none;
+}
+.cy-inline-block{
+	display: inline-block
+}
+
+/****右侧工具栏页面***/
+.cy-tab-input{
+	margin-top: 6px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 0px;
+	font-size: 15px;
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid #333;
+	border-left: none;
+}
+.cy-tab-select{
+	width: 85px;
+}
+.cy-tab-select-f{
+	width: 110px;
+}
+.cy-tab-page {
+	display: inline-block;
+	width: 82px;
+}
+.cy-tab-page a {
+	text-decoration: none;
+	margin: 0 2px;
+}
+.cy-tab-content{
+	min-height: 150px;
+}
+.cy-tab-content .selected {
+	background-color: #F2F5CA;
+}
+.cy-tab-textarea{
+	width: 100%;
+	margin-top: 6px;
+}
+.cy-tab-btn{
+	display: inline-block;
+}
+.cy-tab-btn button{
+	padding: 2px;
+	vertical-align: middle;
+}
+.cy-tab-btn-f{
+	display: inline-block;
+	width: 82px;
+	text-align: right;
+	vertical-align: middle;
+}
+.cy-tab-btn-f button{
+	float: left;
+	margin-left: 2px;
+}
+/*******************/
+
+@media (min-width: 768px) {
+	.cy-block{
+		display: block
+	}
+}
+
+/****弹出框页***/
+.cy-cursor-point{
+	cursor: pointer;
+}
+@media (min-width: 768px) {
+	.cy-modal-dialog-lg{
+		width: 700px;
+	}
+	.cy-card-select{
+		min-width: 130px;
+	}
+}
+
+
+.cy-modal-dialog-f .modal-header{
+	background-color: #5fa2dd;
+	padding: 6px;
+	color: #fff;
+}
+.cy-modal-dialog-f .modal-title{
+	text-indent: 10px;
+	font-size: 16px;
+}
+.cy-modal-dialog-f .close{
+	top: 8px; 
+}
+.cy-modal-dialog-f .modal-body{
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.cy-modal-dialog-f .modal-footer{
+	text-align: center;
+}
+.cy-modal-dialog-f .modal-footer button{
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+@media (max-width: 340px) {
+	.cy-pad-no-xs{
+		padding: none;
+	}
+}
+/*******************/
+/****************************************************/
+
+@media(min-width: 1200px) {
+	#mainnav-menu .menu-title {
+		padding-left: 10px;
+	}
+}
+@media (max-width: 768px) {
+	.cy-index-navright.navbar-top-links>li>a {
+		padding: 0 6px;
+	}
+}
+@media (max-width: 340px) {
+	.cy-pad-no-xs{
+		padding: none;
+	}
+}
+.card-manage-top .panel-body {
+	cursor: pointer;
+}
+
+/************************************************/

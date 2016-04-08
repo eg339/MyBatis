@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+	<!DOCTYPE configuration  
+	  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+	  "http://mybatis.org/dtd/mybatis-3-config.dtd">  
+	<configuration>
+		<!-- 这些属性都是可外部配置且可动态替换的，既可以在典型的Java属性文件中配置，也可通过 properties 元素的子元素(property)来传递-->
+		<properties>
+			<property name="username" value="wr_push"/>
+  			<property name="db.master.jdbc.password" value="123456"/>
+		</properties>
+	    <!-- 对事务的管理和连接池的配置 -->  
+	    <environments default="development">	<!-- 指定默认的数据库链接 -->
+			<environment id="development">		<!-- 配置一个数据库配置信息  -->
+			    <transactionManager type="JDBC" />  <!-- 事务管理 -->
+			    <!-- 配置数据源，type有三种内建的数据源类型：UNPOOLED -->
+			    <dataSource type="POOLED">  
+					<property name="driver" value="${db.master.jdbc.driverClassName}" />  
+					<property name="url" value="${db.master.jdbc.url}" />  
+					<property name="username" value="${username}" />  
+					<property name="password" value="${db.master.jdbc.password}" />  
+			    </dataSource>  
+			</environment>  
+	    </environments>  
+	      
+	    <!-- mapping 文件路径配置 -->  
+	    <mappers>  
+			<mapper resource="data/adminMapper.xml" />
+	    </mappers>
+	     
+	</configuration>
