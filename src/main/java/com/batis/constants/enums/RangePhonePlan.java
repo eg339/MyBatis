@@ -29,17 +29,18 @@ public enum RangePhonePlan {
 	 */
 	public static String getDescsByCodes(String phonePlanRanges) {
 		String descs = "";
-		for (RangePhonePlan rangePhonePlan : values()) {
-			if (phonePlanRanges.contains(rangePhonePlan.code)) {
-				if (StringUtils.isNotEmpty(descs))
-					descs += "," + rangePhonePlan.desc;
-				else
-					descs += rangePhonePlan.desc;
+		if (StringUtils.isNotEmpty(phonePlanRanges))
+			for (RangePhonePlan rangePhonePlan : values()) {
+				if (phonePlanRanges.contains(rangePhonePlan.code)) {
+					if (StringUtils.isNotEmpty(descs))
+						descs += "," + rangePhonePlan.desc;
+					else
+						descs += rangePhonePlan.desc;
+				}
 			}
-		}
 		return descs;
 	}
-	
+
 	public static RangePhonePlan getByCode(String code) {
 		for (RangePhonePlan status : values()) {
 			if (status.code.equals(code))

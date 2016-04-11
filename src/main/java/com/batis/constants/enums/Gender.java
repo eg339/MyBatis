@@ -33,14 +33,15 @@ public enum Gender {
 	 */
 	public static String getDescsByCodes(String genderRanges) {
 		String descs = "";
-		for (Gender gender : values()) {
-			if (genderRanges.contains(gender.code)) {
-				if (StringUtils.isNotEmpty(descs))
-					descs += "," + gender.desc;
-				else
-					descs += gender.desc;
+		if (StringUtils.isNotEmpty(genderRanges))
+			for (Gender gender : values()) {
+				if (genderRanges.contains(gender.code)) {
+					if (StringUtils.isNotEmpty(descs))
+						descs += "," + gender.desc;
+					else
+						descs += gender.desc;
+				}
 			}
-		}
 		return descs;
 	}
 }

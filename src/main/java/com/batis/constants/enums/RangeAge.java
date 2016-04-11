@@ -30,16 +30,18 @@ public enum RangeAge {
 	 */
 	public static String getDescsByCodes(String ageRanges) {
 		String descs = "";
-		for (RangeAge rangeAge : values()) {
-			if (ageRanges.contains(rangeAge.code)) {
-				if (StringUtils.isNotEmpty(descs))
-					descs += "," + rangeAge.desc;
-				else
-					descs += rangeAge.desc;
+		if (StringUtils.isNotEmpty(ageRanges))
+			for (RangeAge rangeAge : values()) {
+				if (ageRanges.contains(rangeAge.code)) {
+					if (StringUtils.isNotEmpty(descs))
+						descs += "," + rangeAge.desc;
+					else
+						descs += rangeAge.desc;
+				}
 			}
-		}
 		return descs;
 	}
+
 	/**
 	 * 根据编码获取
 	 */

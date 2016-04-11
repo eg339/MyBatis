@@ -6,6 +6,13 @@ $.ajaxSetup({
 });
 
 $(function() {
+	/*初始化下拉菜单，参见http://silviomoreto.github.io/bootstrap-select/options/*/
+	 $('#addBusinessDistricts').selectpicker({
+		noneSelectedText : '请选择'
+	});
+	$('#editBusinessDistricts').selectpicker({
+		noneSelectedText : '请选择'
+	});
 	loadBusinessDistricts();
 	/* 标签列表 */
 	$('#tagInfoTable').bootstrapTable({
@@ -55,12 +62,6 @@ $(function() {
 			formatter : operateFormatter
 		} ]
 	});
-
-	// $("input[name=ageRange]").change(function(){
-	// $("#ageRanges").val($('input[name=ageRange]:checked').map(function(){
-	// return this.value
-	// }).get().join(','));
-	// });
 });
 
 function queryParams(params) {
@@ -87,16 +88,43 @@ function operateFormatter(value, row, index) {
  */
 function openAddTagDialog() {
 	$("#addTagInfoForm")[0].reset();
+	resetAddTagForm();
 	$("#addTagInfoDialog").modal('show');
+}
+/**
+ * 添加标签表单重置
+ */
+function resetAddTagForm() {
+	for (var i = 0; i < $("#addBusinessDistricts").get(0).length; i++) {
+		$("#addBusinessDistricts option:eq(" + i + ")").prop("selected", false);
+	}
+	var ageInputs = $("#addTagInfoDialog").find("input[name='ageRanges']");
+	for (var i = 0; i < ageInputs.length; i++) {
+		$(ageInputs[i]).prop("checked", false);
+		$(ageInputs[i]).parent().removeClass("active");
+	}
+	var genderInputs = $("#addTagInfoDialog").find("input[name='genderRanges']");
+	for (var i = 0; i < genderInputs.length; i++) {
+		$(genderInputs[i]).prop("checked", false);
+		$(genderInputs[i]).parent().removeClass("active");
+	}
+	var phonePlanRangesInputs = $("#addTagInfoDialog").find("input[name='phonePlanRanges']");
+	for (var i = 0; i < phonePlanRangesInputs.length; i++) {
+		$(phonePlanRangesInputs[i]).prop("checked", false);
+		$(phonePlanRangesInputs[i]).parent().removeClass("active");
+	}
+	var meTypeRangesInputs = $("#addTagInfoDialog").find("input[name='meTypeRanges']");
+	for (var i = 0; i < meTypeRangesInputs.length; i++) {
+		$(meTypeRangesInputs[i]).prop("checked", false);
+		$(meTypeRangesInputs[i]).parent().removeClass("active");
+	}
 }
 /**
  * 加载商圈回填下拉选择框
  */
 function loadBusinessDistricts() {
 	$("#addBusinessDistricts").empty();
-	$("#addBusinessDistricts").append("<option value='请选择'>请选择</option>");
 	$("#editBusinessDistricts").empty();
-	$("#editBusinessDistricts").append("<option value='请选择'>请选择</option>");
 	$.ajax({
 		type : "post",
 		datatype : "json",

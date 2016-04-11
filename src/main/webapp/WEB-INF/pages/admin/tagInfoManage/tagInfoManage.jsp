@@ -107,9 +107,6 @@
 									<span class="text-danger">*</span>
 									<label class="form-label text-bold" for="">活跃商圈</label> 
 									<select id="addBusinessDistricts" name="businessDistricts" multiple="multiple" class="selectpicker" >
-										<option value="00">正常</option>
-										<option value="01">暂停</option>
-										<option value="02">下线</option>
 									</select>
 								</div>
 							</div>
@@ -213,9 +210,6 @@
 									<span class="text-danger">*</span>
 									<label class="form-label text-bold" for="">活跃商圈</label> 
 									<select id="editBusinessDistricts" name="businessDistricts" multiple="multiple" class="selectpicker" >
-										<option value="00">正常</option>
-										<option value="01">暂停</option>
-										<option value="02">下线</option>
 									</select>
 								</div>
 							</div>

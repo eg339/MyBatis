@@ -33,14 +33,15 @@ public enum METype {
 	 */
 	public static String getDescsByCodes(String meTypeRanges) {
 		String descs = "";
-		for (METype meType : values()) {
-			if (meTypeRanges.contains(meType.code)) {
-				if (StringUtils.isNotEmpty(descs))
-					descs += "," + meType.desc;
-				else
-					descs += meType.desc;
+		if (StringUtils.isNotEmpty(meTypeRanges))
+			for (METype meType : values()) {
+				if (meTypeRanges.contains(meType.code)) {
+					if (StringUtils.isNotEmpty(descs))
+						descs += "," + meType.desc;
+					else
+						descs += meType.desc;
+				}
 			}
-		}
 		return descs;
 	}
 }

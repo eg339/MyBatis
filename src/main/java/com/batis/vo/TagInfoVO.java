@@ -3,6 +3,8 @@
  */
 package com.batis.vo;
 
+import com.batis.utils.StringUtils;
+
 /**
  * 标签管理
  * 
@@ -17,28 +19,28 @@ public class TagInfoVO extends BaseGridVO {
 	/* 商圈集合 */
 	private String businessDistricts;
 	/* 年龄段集合 */
-	private String[] ageRanges;
-	/*数据库保存的年龄码集合字符串*/
+	private String[] ageRanges = new String[0];
+	/* 数据库保存的年龄码集合字符串 */
 	private String ageRangesCode;
-	/*年龄描述集合字符串*/
+	/* 年龄描述集合字符串 */
 	private String ageRangesVal;
 	/* 性别集合 */
-	private String[] genderRanges;
-	/*数据库保存的性别码集合字符串*/
+	private String[] genderRanges = new String[0];
+	/* 数据库保存的性别码集合字符串 */
 	private String genderRangesCode;
-	/*性别描述集合字符串*/
+	/* 性别描述集合字符串 */
 	private String genderRangesVal;
 	/* 套餐档位集合 */
-	private String[] phonePlanRanges;
-	/*数据库保存的套餐码集合字符串*/
+	private String[] phonePlanRanges = new String[0];
+	/* 数据库保存的套餐码集合字符串 */
 	private String phonePlanRangesCode;
-	/*套餐档位描述集合字符串*/
+	/* 套餐档位描述集合字符串 */
 	private String phonePlanRangesVal;
 	/* 终端类型集合 */
-	private String[] meTypeRanges;
-	/*数据库保存的终端类型码集合字符串*/
+	private String[] meTypeRanges = new String[0];
+	/* 数据库保存的终端类型码集合字符串 */
 	private String meTypeRangesCode;
-	/*终端类型描述集合字符串*/
+	/* 终端类型描述集合字符串 */
 	private String meTypeRangesVal;
 	/* 标签描述 */
 	private String description;
@@ -67,7 +69,7 @@ public class TagInfoVO extends BaseGridVO {
 	}
 
 	public String getBusinessDistricts() {
-		return businessDistricts;
+		return StringUtils.trimToEmpty(businessDistricts);
 	}
 
 	public void setBusinessDistricts(String businessDistricts) {
@@ -139,7 +141,7 @@ public class TagInfoVO extends BaseGridVO {
 	}
 
 	public String getAgeRangesCode() {
-		return ageRangesCode;
+		return StringUtils.trimToEmpty(ageRangesCode);
 	}
 
 	public void setAgeRangesCode(String ageRangesCode) {
@@ -147,7 +149,7 @@ public class TagInfoVO extends BaseGridVO {
 	}
 
 	public String getGenderRangesCode() {
-		return genderRangesCode;
+		return StringUtils.trimToEmpty(genderRangesCode);
 	}
 
 	public void setGenderRangesCode(String genderRangesCode) {
@@ -155,7 +157,7 @@ public class TagInfoVO extends BaseGridVO {
 	}
 
 	public String getPhonePlanRangesCode() {
-		return phonePlanRangesCode;
+		return StringUtils.trimToEmpty(phonePlanRangesCode);
 	}
 
 	public void setPhonePlanRangesCode(String phonePlanRangesCode) {
@@ -163,7 +165,7 @@ public class TagInfoVO extends BaseGridVO {
 	}
 
 	public String getMeTypeRangesCode() {
-		return meTypeRangesCode;
+		return StringUtils.trimToEmpty(meTypeRangesCode);
 	}
 
 	public void setMeTypeRangesCode(String meTypeRangesCode) {
@@ -193,5 +195,4 @@ public class TagInfoVO extends BaseGridVO {
 	public void setLastUpdTime(String lastUpdTime) {
 		this.lastUpdTime = lastUpdTime;
 	}
-
 }
